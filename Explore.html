@@ -1,0 +1,1763 @@
+<!-- //////////
+
+
+ این صفحه ساختش برای دوران جاهلیت بنده بوده و اگه تمیز نوشته نشده مرا ببخشید😂😂 
+
+
+ ////////-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <style>
+        .disable-in-phone {
+            position: relative;
+            display: inline-block;
+        }
+
+        @media (max-width: 1199px) {
+            .disable-in-phone {
+                display: none;
+            }
+
+            .responsive-phone {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 1030;
+                margin: 5%;
+                margin-bottom: 6rem;
+            }
+
+            nav {
+                top: auto;
+                height: 7%;
+            }
+
+            nav.mb-5 {
+                margin-bottom: 2rem !important;
+            }
+
+            .current-page h1,
+            h3 {
+                font-size: 25px;
+            }
+
+            .current-page h3 {
+                font-size: 18px;
+            }
+
+        }
+
+        .icon-btn {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background: none;
+            padding: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #555;
+            stroke-width: 2;
+            transition: fill 0.25s ease, stroke 0.25s ease;
+        }
+
+        .active svg {
+            fill: currentColor;
+            stroke: currentColor;
+        }
+
+        .like.active {
+            color: #e63946;
+        }
+
+        .save.active {
+            color: #000000;
+        }
+
+        .line {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            display: inline-block;
+        }
+
+        .line.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .subtitle-btn {
+            border: none;
+            border-radius: 2rem;
+            padding: 5px;
+            width: 30%;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.548);
+            color: #000000;
+            transition: color 0.3s ease;
+            background-image: linear-gradient(to left, rgba(134, 134, 134, 0.219) 50%, transparent 70%);
+            background-size: 200% 100%;
+            background-position: 100% 0;
+            transition: background-position 0.7s ease, color 0.3s ease;
+        }
+
+        .subtitle-btn:hover {
+            background-position: 0 0;
+            color: rgb(0, 0, 0);
+        }
+
+        .player {
+            background: white;
+            padding: 20px;
+            border-radius: 2rem;
+            box-shadow: 0 0 10px rgb(0, 0, 0);
+            text-align: center;
+            transition: all 1s ease;
+            z-index: 1;
+
+        }
+
+        @media (min-width: 2000px) {
+            .player {
+                transition: all 1s ease;
+            }
+        }
+
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            border-radius: 5px;
+            margin: 15px 0;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: #414141;
+            border-radius: 5px;
+            transition: width 0.1s ease;
+        }
+
+        .time {
+            display: flex;
+            justify-content: right;
+            font-size: 14px;
+            font-weight: bold;
+            color: #000000;
+            background: #c7c7c769;
+            border-radius: 2rem;
+            padding: 1%;
+        }
+
+
+        #playPauseBtn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 2rem;
+            background: #ffffff00;
+            cursor: pointer;
+            padding: -20px;
+            transition: all 1s ease;
+        }
+
+        #playPauseBtn:hover {
+            background: #ffffff00;
+            transform: scale(1.2);
+        }
+
+        .download-btn {
+            border: none;
+            border-radius: 10px;
+            width: 40px;
+            background: #afafaf00;
+
+        }
+
+        #forwardBtn,
+        #rewindBtn {
+            border: none;
+            border-radius: 2rem;
+            width: 45px;
+            height: 45px;
+            background: #ffffff00;
+            transition: all 1s ease;
+        }
+
+        #forwardBtn:hover,
+        #rewindBtn:hover {
+            background: #ffffff00;
+            transform: scale(1.2);
+        }
+
+        .row-dropdown-menu {
+            border: 2px solid;
+            border-radius: 2rem;
+        }
+
+        .dropdown-menu {
+            border-radius: 1rem;
+            padding: 3%;
+            width: 0;
+            background: rgba(0, 0, 0, 0.37);
+            border: none;
+            transition: width 1s ease;
+        }
+
+        .dropdown-menu:active {
+            width: 50%;
+        }
+
+        .dropdown-item {
+            border-radius: 2rem;
+            background: rgba(255, 255, 255, 0.856);
+        }
+
+        #waveform {
+            border-radius: 2rem;
+            background: #ff000000;
+            width: 100%;
+            height: 40px;
+        }
+
+        #controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            justify-self: center;
+            background-color: rgb(255 255 255 / 50%);
+            box-shadow: 0 0 15px #000000;
+            border-radius: 2rem;
+            width: 200px;
+        }
+
+
+        #progressContainer {
+            position: relative;
+            background-color: #ffffff3b;
+            width: 100%;
+            height: 40px;
+            overflow: hidden;
+            cursor: pointer;
+            margin-top: -48px;
+            border-radius: 2rem;
+        }
+
+        #progressBar {
+            background-color: rgb(0 0 0 / 50%);
+            height: 40px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .bg-canv {
+            border-radius: 2rem;
+            border: 2px solid;
+            height: 40px;
+        }
+
+        .bg {
+            transition: background-color 0.25s ease;
+        }
+
+
+
+        @keyframes rotate-clockwise {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotate-counterclockwise {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+
+        .rotate-clockwise {
+            animation: rotate-clockwise 0.6s linear;
+        }
+
+        .rotate-counterclockwise {
+            animation: rotate-counterclockwise 0.6s linear;
+        }
+
+        @keyframes scaleDownUp {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(0.7);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .animate-scale {
+            animation: scaleDownUp 0.3s ease forwards;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+        }
+
+        #tsparticles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            background-image: url("/img/bg/bg-all.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card {
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 2rem;
+            box-shadow: 0 0 20px rgb(0, 0, 0);
+        }
+
+
+        .bg-all {
+            background-image: url("/img/bg/bg-all.jpg");
+        }
+
+        .bg-box {
+            background-image: url("/img/bg/bg-box.jpg");
+
+        }
+
+        .row-tbR {
+            padding-top: 3%;
+            border: 2px solid black;
+            border-radius: 1rem;
+            margin-bottom: 5%;
+        }
+
+        .hr-tbR {
+            border: none;
+            margin: 5px;
+            height: 3px;
+            background-color: black;
+        }
+
+        .row-tbR-li {
+            border-radius: 1rem;
+            margin: 0;
+            margin-left: 3px;
+            margin-right: 3px;
+            margin-bottom: 3px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            background-image: linear-gradient(to center, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            background-size: 200% 100%;
+            background-position: 100% 0;
+            transition: background-position 0.7s ease, box-shadow 1s ease, scale 0.8s ease, border 1.5s ease;
+        }
+
+        .row-tbR-li:hover {
+            background-position: 0 0;
+            border: 5px solid;
+            box-shadow: 0 8px 20px black;
+            scale: 1.1;
+        }
+
+        .row-tbCenter .title {
+            font-size: 150%;
+            background-color: #c2c2c260;
+            border-radius: 2rem;
+            margin-top: 1rem;
+            padding: 2%;
+        }
+
+        .title {
+            font-size: 150%;
+            background-color: #c2c2c260;
+            border-radius: 2rem;
+            padding: 2%;
+        }
+
+        h3 {
+            padding: 5px;
+            border-bottom: 1px solid;
+        }
+
+        .h5 {
+            margin-top: -10px;
+            padding: 15px;
+            border-bottom: 1px solid;
+        }
+
+        .box-1 {
+            justify-items: center;
+
+        }
+
+        .box-2 {
+            border: 2px solid black;
+            border-radius: 2rem;
+            max-width: 340px;
+            width: 340px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .show-search {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 2rem;
+            z-index: 10;
+            max-width: 0;
+            height: 5%;
+            overflow: hidden;
+            background-color: #a1a1a148;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.829);
+            transition: max-width 1s ease 2s;
+        }
+
+
+        .search {
+            max-width: 0;
+            height: 0px;
+            overflow: hidden;
+            transition: max-width 2s ease, height 0.6s ease;
+        }
+
+
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(2px);
+            background-color: rgba(255, 255, 255, 0.342);
+            z-index: 5;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease;
+        }
+
+
+        .form-search {
+            outline: none;
+            border: 2px solid black;
+            border-radius: 2rem;
+            height: 50px;
+            color: black;
+            background-color: rgba(202, 200, 200, 0.692);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .form-search::placeholder {
+            font-weight: bold;
+            color: #000;
+            opacity: 0.6;
+        }
+
+        #toggle-search:checked~.main-search .show-search {
+            max-width: 260px;
+            height: auto;
+            z-index: 3000;
+        }
+
+        @media (max-width: 768px) {
+            #toggle-search:checked~.main-search .show-search {
+                max-width: 240px;
+                height: auto;
+                z-index: 3000;
+            }
+        }
+
+        #toggle-search:checked~.main-search .search-overlay {
+            opacity: 1;
+            visibility: visible;
+            z-index: 3000;
+
+        }
+
+
+        .fixed-bottom-space {
+            height: 150px;
+        }
+
+        .link {
+            padding-top: 8px;
+            justify-content: center;
+            gap: 8%;
+        }
+
+        @media (max-width: 768px) {
+            .player {
+                background-image: url('');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                padding: 20px;
+                border-radius: 2rem;
+                box-shadow: 0 0 20px rgb(0 0 0);
+                text-align: center;
+            }
+
+            .title {
+                font-size: 150%;
+                background-color: #cececed7;
+                border-radius: 2rem;
+                padding: 2%;
+            }
+
+            .margin-cover {
+                margin-bottom: 20%;
+            }
+
+        }
+
+
+
+        .player.inactive {
+            pointer-events: none;
+            opacity: 0;
+            filter: blur(5px);
+            transition: opacity 0.6s ease, filter 0.6s ease;
+        }
+
+        .player.active {
+            pointer-events: auto;
+            opacity: 1;
+            filter: blur(0);
+        }
+
+
+        .cover-box {
+            position: relative;
+            border-radius: 2rem;
+            background: #ffffffa8;
+            box-shadow: 0 0 10px black;
+            max-width: 200px;
+            width: 100%;
+            box-shadow: 0 0 20px rgb(0, 0, 0);
+
+        }
+
+        .rotating {
+            height: 164px;
+            border-radius: 2rem 2rem 0 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.1s linear;
+        }
+
+        .rotating img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-size: cover;
+            -webkit-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .song-item {
+            position: absolute;
+            top: 164px;
+            font-weight: bold;
+            background: rgba(3, 3, 3, 0.822);
+            color: white;
+            border-radius: 0 0 2rem 2rem;
+            max-width: 200px;
+            width: 100%;
+            height: 50px;
+            box-shadow: 0 0 20px black;
+            z-index: 1;
+        }
+
+        .toggle {
+            position: absolute;
+            top: 45%;
+            left: 39%;
+            border-radius: 2rem;
+            border: none;
+            background: #e7e7e713;
+            width: 45px;
+            height: 45px;
+            box-shadow: 0 0 10px black;
+            transition: background 1s ease, transform 1s ease;
+            z-index: 1;
+        }
+
+        .toggle img {
+            width: 100%;
+            height: 33px;
+        }
+
+        .toggle:hover {
+            background: #ffffff73;
+            transform: scale(1.1);
+
+        }
+
+        .cover-visualizer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: transparent;
+            mix-blend-mode: screen;
+        }
+
+        @media (min-width: 1200px) {
+            .margin-cover {
+                margin-bottom: 5%;
+            }
+        }
+
+        .icon-btn {
+            cursor: pointer;
+            width: 35px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background: none;
+            padding: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #000000;
+            stroke-width: 2;
+            transition: fill 0.25s ease, stroke 0.25s ease;
+        }
+
+        .active svg {
+            fill: currentColor;
+            stroke: currentColor;
+        }
+
+        .like.active {
+            color: #e63946;
+        }
+
+        .save.active {
+            color: #000000;
+        }
+
+        .like-panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e7e7e700;
+            box-shadow: 0 0 10px black;
+            border-radius: 2rem;
+            display: flex;
+            flex-direction: column;
+            /* ستون */
+            align-items: center;
+            z-index: 1;
+            width: 40px;
+            height: auto;
+            z-index: 2;
+        }
+
+        .save-panel {
+            position: absolute;
+            top: 10px;
+            right: 58px;
+            background: #e7e7e700;
+            box-shadow: 0 0 10px black;
+            border-radius: 2rem;
+            display: flex;
+            flex-direction: column;
+            /* ستون */
+            align-items: center;
+            z-index: 1;
+            width: 40px;
+            height: auto;
+            z-index: 2;
+        }
+
+        a {
+            direction: none;
+        }
+
+        body {
+            padding-top: 100px;
+        }
+
+        /* ---------- Base Container ---------- */
+        .site-status {
+            direction: rtl;
+            background: linear-gradient(135deg, #a7a7a700, #000000b0);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            border-radius: 22px;
+            padding: 0;
+            box-shadow: 0 0 30px rgba(139, 0, 81, 0.103);
+            overflow: hidden;
+            position: fixed;
+            margin: 1%;
+            z-index: 2000;
+            transition: all 1s ease;
+        }
+
+        .site-status::after {
+            content: "";
+            position: absolute;
+            inset: -20% -10% auto auto;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(closest-side, rgba(255, 255, 255, .12), transparent 70%);
+            filter: blur(4px);
+            z-index: -1;
+            transform: translate(10%, -10%);
+        }
+
+        .current-page {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            padding: 14px 20px;
+            cursor: pointer;
+            font-weight: 700;
+            justify-content: space-between;
+        }
+
+        .current-page span {
+            opacity: .9
+        }
+
+        .current-page h3 {
+            color: rgba(255, 255, 255, 0.973);
+            box-shadow: 0 0 28px rgba(255, 255, 255, 0.13);
+            background: rgba(0, 0, 0, 0.616);
+            padding: 10px;
+            border-radius: 2rem;
+            border: none;
+        }
+
+        .current-page h1 {
+            color: rgba(255, 255, 255, 0.87);
+            filter: drop-shadow(0 0 15px rgb(255, 255, 255));
+            padding: .25rem .6rem;
+            border-radius: 2rem;
+            border: none;
+        }
+
+        /* --- Dropdown --- */
+        .menu {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 1s ease;
+            transform: translateY(-10px);
+            padding: 0 22px;
+        }
+
+        .site-status.menu-open .menu {
+            max-height: 600px;
+            opacity: 1;
+            transform: translateY(0);
+            padding: 22px;
+        }
+
+        /* --- Genre Chips --- */
+        .genres {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .genre-chip {
+            --bg1: #ffffff24;
+            --bg2: #ffffff10;
+            --ring: #ffffff55;
+        }
+
+        .genre-chip a {
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            padding: 10px 14px;
+            border-radius: 9999px;
+            background: linear-gradient(145deg, var(--bg1), var(--bg2));
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: .2px;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, .18);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
+            transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+        }
+
+        .genre-chip a:focus-visible {
+            outline: 3px solid var(--ring);
+            outline-offset: 2px;
+        }
+
+        .genre-chip a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, .24);
+        }
+
+        .genre-chip .ico {
+            font-size: 1.1rem;
+            opacity: .95
+        }
+
+        .genre-chip.is-active a {
+            border-color: #c10050;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .28);
+        }
+
+        .menu-title {
+            opacity: .9;
+            margin-bottom: .35rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 800px) {
+            #header {
+                height: auto;
+                transition: transform 400ms ease;
+                z-index: 999;
+            }
+
+            #header.compact {
+                transform: translateY(300px);
+            }
+        }
+
+
+        #like-count {
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+
+        body {
+            background-color: #000210;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+
+        }
+
+        #pattern {
+            position: fixed;
+            top: -44px;
+            left: -50px;
+            right: 0;
+            bottom: 0;
+        }
+
+        #gradient {
+            background: radial-gradient(#c10050, transparent 50%);
+            width: 600px;
+            height: 600px;
+            position: fixed;
+            top: -300px;
+            left: -300px;
+            transform: translate(300px, 300px);
+        }
+
+        #flash {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            border: 50%;
+            background: linear-gradient(45deg, #c10050 0%, rgba(255, 128, 206, 0.2) 70%, transparent 100%);
+            opacity: 0;
+            transform-origin: bottom right;
+            transform: translate(100%, 100%) scale(0.3);
+            filter: blur(15px);
+        }
+
+
+
+        #flash.flash-run {
+            animation: flashPulses 1.2s ease-out forwards;
+        }
+
+        @media (max-width: 800px) {
+            #flash.flash-run {
+                animation: flashPulses 1.5s ease-out forwards;
+            }
+        }
+
+        @keyframes flashPulses {
+            0% {
+                opacity: 0;
+                transform: translate(100%, 100%) scale(0.3);
+                filter: blur(15px);
+            }
+
+            20% {
+                opacity: 0.2;
+                transform: translate(70%, 70%) scale(0.5);
+                filter: blur(10px);
+            }
+
+            40% {
+                opacity: 0.4;
+                transform: translate(50%, 50%) scale(0.9);
+                filter: blur(15px);
+            }
+
+            60% {
+                opacity: 0.8;
+                transform: translate(30%, 30%) scale(1.4);
+                filter: blur(12px);
+            }
+
+            80% {
+                opacity: 0.3;
+                transform: translate(15%, 15%) scale(1.8);
+                filter: blur(20px);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(0%, 0%) scale(2.2);
+                filter: blur(30px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="gradient"></div>
+    <div id="pattern"></div>
+    <div id="flash"></div>
+    <input type="checkbox" id="toggle-search" hidden>
+    <div class="main-search">
+        <div class="search-overlay">
+            <div class="position-relative show-search search text-center">
+                <input type="text" class="text-center form-search" placeholder="جستجو">
+                <a href="#" style="color: black;">
+                    <i class="bi bi-trash position-absolute"
+                        style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                    <i class="bi bi-search position-absolute"
+                        style="left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                </a>
+            </div>
+        </div>
+        <nav class="fixed-bottom mb-5">
+            <div class="box-1">
+                <div class="box-2">
+                    <div class="d-flex link">
+                        <a href="#"><img src="img/ico/nav/home.png" alt="Home"></a>
+                        <a href="#"><img src="img/ico/nav/other.png" alt="Other"></a>
+                        <a href="#"><img src="img/ico/nav/profile.png" alt="Profile"></a>
+                        <label for="toggle-search">
+                            <img src="img/ico/nav/search.png" alt="search">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="site-status fixed-top mt-2">
+        <!-- وضعیت فعلی -->
+        <div class="current-page">
+            <h1>اکسپلور</h1>
+            <h3>سبک ها ▼</h3>
+        </div>
+
+        <!-- Dropdown منوی ژانرها -->
+        <nav class="menu" aria-label="فیلتر بر اساس ژانر">
+            <ul class="genres" role="list">
+                <li class="genre-chip is-active"><a href="#" data-genre="all" aria-current="page"><span>جدید ترین
+                            ها</span></a>
+                </li>
+                <li class="genre-chip is-active"><a href="#" data-genre="all" aria-current="page"><span>محبوب ترین
+                            ها</span></a>
+                </li>
+                <li class="genre-chip is-active"><a href="#" data-genre="all" aria-current="page"><span>ستاره‌های در حال
+                            ظهور</span></a>
+                </li>
+            </ul>
+            <div class="menu-title text-end">سبک ها</div>
+            <ul class="genres" role="list">
+                <li class="genre-chip is-active"><a href="#" data-genre="all" aria-current="page"><span
+                            class="ico">✨</span><span>همه</span></a></li>
+                <li class="genre-chip"><a href="#" data-genre="pop"><span class="ico">🎧</span><span>پاپ</span></a></li>
+                <li class="genre-chip"><a href="#" data-genre="rap"><span class="ico">🎤</span><span>رپ /
+                            هیپ‌هاپ</span></a></li>
+                <li class="genre-chip"><a href="#" data-genre="rock"><span class="ico">🎸</span><span>راک</span></a>
+                </li>
+                <li class="genre-chip"><a href="#" data-genre="classical"><span
+                            class="ico">🎻</span><span>کلاسیک</span></a></li>
+                <li class="genre-chip"><a href="#" data-genre="jazz"><span class="ico">🎷</span><span>جَز</span></a>
+                </li>
+                <li class="genre-chip"><a href="#" data-genre="electronic"><span
+                            class="ico">🎛️</span><span>الکترونیک</span></a></li>
+                <li class="genre-chip"><a href="#" data-genre="traditional"><span
+                            class="ico">🪕</span><span>سنتی</span></a></li>
+                <li class="genre-chip"><a href="#" data-genre="reggae"><span class="ico">🌴</span><span>رگه</span></a>
+                </li>
+                <li class="genre-chip"><a href="#" data-genre="metal"><span class="ico">🤘</span><span>متال</span></a>
+                </li>
+                <li class="genre-chip"><a href="#" data-genre="latin"><span class="ico">💃</span><span>لاتین</span></a>
+                </li>
+                <li class="genre-chip"><a href="#" data-genre="lofi"><span class="ico">🌙</span><span>لوفای</span></a>
+                </li>
+                <li class="genre-chip"><a href="#" data-genre="instrumental"><span
+                            class="ico">🎼</span><span>بی‌کلام</span></a></li>
+                <li class="genre-chip"><a href="#" data-genre="dance"><span class="ico">🕺</span><span>دنس</span></a>
+                </li>
+                <li class="genre-chip"><a href="#" data-genre="house"><span class="ico">🏠</span><span>هاوس</span></a>
+                </li>
+                <li class="genre-chip"><a href="#" data-genre="blues"><span class="ico">🎙️</span><span>بلوز</span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="row m-3 gap-4  justify-content-center">
+        <div class="col-sm-12 col-md-12 col-xl-8 bg-box text-center " style="background: #00000000;">
+            <div class="row g-3" style="margin-bottom: 200px;">
+                <div
+                    class="col-6 col-sm-6 col-md-4 col-xl-2 col-lg-2 d-flex justify-content-center align-items-center g-3 margin-cover">
+                    <div class="cover-box text-center">
+                        <div class="rotating" style="position: relative; display: flex; justify-content:    center;">
+                            <img draggable="false"
+                                src="https://ix-marketing.imgix.net/blog-Why%2095%25%20of%20AI%20Pilots%20Fail%20%E2%80%93%20and%20What%20the%20Smart%205%25%20Are%20Doing%20Instead.png?auto=format,compress&w=1946"
+                                alt="demo" />
+                            <canvas class="cover-visualizer"></canvas>
+                            <!-- دکمه پلی -->
+                            <button class="toggle">
+                                <img src="img/ico/audio-player/play-button.png" draggable="false" class="img-fluid"
+                                    alt="">
+                            </button>
+                            <!-- پنل لایک و سیو -->
+                            <div class="save-panel">
+                                <button class="icon-btn save" aria-label="Save">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="like-panel"
+                                style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                <button class="icon-btn like" aria-label="Like" onclick="incrementLike()">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                                        2 6 4 4 6.5 4c1.74 0 3.41 1 4.13 2.44h.74C14.09 5 15.76 4 17.5 4
+                                        20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                    </svg>
+                                </button>
+                                <span class="p-2" id="like-count"
+                                    style="margin-top: -15px; display: inline-block;">1.2k</span>
+                            </div>
+                        </div>
+                        <div class="song-item" data-src="music/Dayan-HavasPart.mp3">
+                            Dayan-HavasPart
+                        </div>
+                    </div>
+                </div>
+                <!-- مثال دو کاور -->
+                <div
+                    class="col-6 col-sm-6 col-md-4 col-xl-2 col-lg-2 d-flex justify-content-center align-items-center margin-cover">
+                    <div class="cover-box text-center">
+                        <div class="rotating" style="position: relative; display: flex; justify-content: center;">
+                            <img src="https://ix-marketing.imgix.net/focalpoint.png?auto=format,compress&w=1946"
+                                alt="demo" />
+                            <canvas class="cover-visualizer"></canvas>
+                            <!-- دکمه پلی -->
+                            <button class="toggle">
+                                <img src="img/ico/audio-player/play-button.png" class="img-fluid" alt="">
+                            </button>
+                            <!-- پنل لایک و سیو -->
+                            <div class="save-panel">
+                                <button class="icon-btn save" aria-label="Save">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="like-panel">
+                                <button class="icon-btn like" aria-label="Like">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                                          2 6 4 4 6.5 4c1.74 0 3.41 1 4.13 2.44h.74C14.09 5 15.76 4 17.5 4
+                                          20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                    </svg>
+                                </button>
+                                <span class="p-2" id="like-count"
+                                    style="margin-top: -15px; display: inline-block;">1.2k</span>
+                            </div>
+                        </div>
+                        <div class="song-item" data-src="/music/Cleffy - Meet you at the Graveyard.mp3">Cleffy-Meet you at...</div>
+                    </div>
+                </div>
+                <!-- مثال دو کاور -->
+                <div
+                    class="col-6 col-sm-6 col-md-4 col-xl-2 col-lg-2 d-flex justify-content-center align-items-center margin-cover">
+                    <div class="cover-box text-center">
+                        <div class="rotating" style="position: relative; display: flex; justify-content: center;">
+                            <img src="https://ix-marketing.imgix.net/autotagging.png?auto=format,compress&w=1946"
+                                alt="demo" />
+                            <canvas class="cover-visualizer"></canvas>
+                            <!-- دکمه پلی -->
+                            <button class="toggle">
+                                <img src="img/ico/audio-player/play-button.png" class="img-fluid" alt="">
+                            </button>
+                            <!-- پنل لایک و سیو -->
+                            <div class="save-panel">
+                                <button class="icon-btn save" aria-label="Save">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="like-panel">
+                                <button class="icon-btn like" aria-label="Like">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                                          2 6 4 4 6.5 4c1.74 0 3.41 1 4.13 2.44h.74C14.09 5 15.76 4 17.5 4
+                                          20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                    </svg>
+                                </button>
+                                <span class="p-2" id="like-count"
+                                    style="margin-top: -15px; display: inline-block;">1.2k</span>
+                            </div>
+                        </div>
+                        <div class="song-item" data-src="/music/Kygo-feat.-OneRepublic-Stranger-Things1.mp3">Kygo-StrangerThings</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class=" col-sm-12 col-md-12 col-xl-3 ">
+            <div class="sticky-top">
+                <div class="player responsive-phone bg-cover inactive" id="header" class="shrink-header">
+                    <div class=" img-container disable-in-phone">
+                        <canvas id="waveCanvas2" style="position: absolute; top: 0; left: 0; width: 100%;
+                                pointer-events: none; border-radius: 2rem;">
+                        </canvas>
+                        <img src="" class="img-fluid img mb-2 bg-cover" alt="profile"
+                            style="border: 2px solid; border-radius: 2rem; display: block; width: 99%; height: auto;">
+                    </div>
+                    <p class="title bg" id="current-song" id="player-title">نام سر تیتر </p>
+                    <audio id="audio-player" style="width: 80%;">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="bg-canv bg">
+                        <canvas id="waveform"></canvas>
+                        <div id="progressContainer">
+                            <div id="progressBar">
+                                <div class="time-display text-end">
+
+                                    <span id="currentTime" style="color: #000;">0:00</span>
+
+                                </div>
+                                <img src="img/R-1--unscreen.gif" alt="" style="width: 50px; margin-top: -40px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex row">
+                        <!-- control button -->
+                        <div class="justify-content-start mt-3">
+                            <div id="controls" role="group">
+                                <button id="rewindBtn"><img src="img/ico/audio-player/ten-back.png" alt="back"
+                                        class="img-fluid"></button>
+                                <button id="playPauseBtn"><img src="img/ico/audio-player/play-button.png" alt="play"
+                                        class="img-fluid img-audio">
+                                </button>
+                                <button id="forwardBtn"><img src="img/ico/audio-player/ten-forward.png" alt="forward"
+                                        class="img-fluid"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-bottom-space"></div>
+</body>
+<!-- bg -->
+<script>
+    (function () {
+        let flash = document.getElementById('flash');
+        if (!flash) {
+            flash = document.createElement('div');
+            flash.id = 'flash';
+            document.body.appendChild(flash);
+        }
+
+        function runFlash() {
+            // ریست کردن کلاس برای اجرای دوباره
+            flash.classList.remove('flash-run');
+            void flash.offsetWidth; // Force reflow
+            flash.classList.add('flash-run');
+            flash.addEventListener('animationend', () => {
+                flash.classList.remove('flash-run');
+            }, { once: true });
+        }
+
+        // اجرای هنگام لود صفحه
+        window.addEventListener('load', runFlash);
+
+        // اجرای هنگام بازگشت به تب
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                runFlash();
+            }
+        });
+    })();
+
+    const patternElement = document.getElementById("pattern");
+
+    function generatePattern() {
+        patternElement.innerHTML = ""; // پاک کردن قبلی‌ها
+
+        const countY = Math.ceil(patternElement.clientHeight / 40) + 1;
+        const countX = Math.ceil(patternElement.clientWidth / 48) + 1;
+
+        for (let i = 0; i < countY; i++) {
+            for (let j = 0; j < countX; j++) {
+                const hexagon = document.createElement("div");
+                hexagon.style = `
+                background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODciIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgODcgMTAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMi4xOTg3MyAyNi4xNTQ3TDQzLjUgMi4zMDk0TDg0LjgwMTMgMjYuMTU0N1Y3My44NDUzTDQzLjUgOTcuNjkwNkwyLjE5ODczIDczLjg0NTNWMjYuMTU0N1oiIGZpbGw9IiMxMzEyMTciIHN0cm9rZT0iIzEzMTIxNyIgc3Ryb2tlLXdpZHRoPSI0Ii8+Cjwvc3ZnPgo=') no-repeat;
+                width: 44px;
+                height: 50px;
+                background-size: contain;
+                position: absolute;
+                top: ${i * 40}px;
+                left: ${j * 48 + ((i * 24) % 48)}px;
+            `;
+                patternElement.appendChild(hexagon);
+            }
+        }
+    }
+
+    // اجرای اولیه
+    generatePattern();
+
+    // بازتولید هنگام تغییر اندازه پنجره
+    window.addEventListener("resize", generatePattern);
+
+
+    let mousePosition = {
+        x: 0,
+        y: 0
+    };
+
+    document.addEventListener("mousemove", (mouse) => {
+        mousePosition = {
+            x: mouse.clientX,
+            y: mouse.clientY
+        };
+    });
+
+    const loop = () => {
+        const gradientElement = document.getElementById("gradient");
+
+        gradientElement.style.transform = `translate(${mousePosition.x}px, ${mousePosition.y}px)`;
+
+        // Request the next animation frame
+        window.requestAnimationFrame(loop);
+    };
+
+    // Start the animation loop
+    window.requestAnimationFrame(loop);
+
+</script>
+
+
+<script>
+
+    function playSong(url) {
+        let player = document.getElementById("player");
+        player.src = url;
+        player.play();
+    }
+
+
+    document.addEventListener('click', function (e) {
+        const checkbox = document.getElementById('toggle-search');
+        const label = document.querySelector('label[for="toggle-search"]');
+        const searchBox = document.querySelector('.show-search');
+        const box2 = document.getElementsByClassName('box-2')[0];
+
+        if (
+            !checkbox.contains(e.target) &&
+            !label.contains(e.target) &&
+            !searchBox.contains(e.target)
+        ) {
+            checkbox.checked = false;
+        }
+    });
+    const currentPage = document.querySelector('.current-page');
+    const menu = document.querySelector('.menu');
+    const container = document.querySelector('.site-status');
+
+    // وضعیت منو
+    function toggleMenu(forceOpen = null) {
+        container.classList.toggle('menu-open',
+            forceOpen !== null ? forceOpen : !container.classList.contains('menu-open')
+        );
+    }
+
+    // رویدادها (هم کلیک، هم هاور، بسته به نوع ورودی کاربر)
+    let hasTouch = false;
+
+    window.addEventListener('touchstart', () => { hasTouch = true; }, { once: true });
+
+    currentPage.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleMenu();
+    });
+
+    // اگر کاربر با موس حرکت کرد → هاور فعال بشه
+    window.addEventListener('mousemove', () => {
+        if (!hasTouch) {
+            currentPage.addEventListener('mouseenter', () => toggleMenu(true));
+            currentPage.addEventListener('mouseleave', () => toggleMenu(false));
+            menu.addEventListener('mouseenter', () => toggleMenu(true));
+            menu.addEventListener('mouseleave', () => toggleMenu(false));
+        }
+    }, { once: true });
+
+    // همه دکمه‌های like
+    document.querySelectorAll('.like').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('active');
+            console.log("Like status:", btn.classList.contains('active'));
+        });
+    });
+
+    // همه دکمه‌های save
+    document.querySelectorAll('.save').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('active');
+            console.log("Save status:", btn.classList.contains('active'));
+        });
+    });
+
+
+    const songItems = document.querySelectorAll('.song-item');
+    const audioPlayer = document.getElementById('audio-player');
+    const currentSong = document.getElementById('current-song');
+    const coverImg = document.querySelector('.player .img');
+    const playerPanel = document.querySelector('.bg-cover');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const currentTimeEl = document.getElementById("currentTime");
+
+    // 🎵 کانواس موج (Waveform)
+    const canvasWave = document.getElementById("waveform");
+    const ctxWave = canvasWave.getContext("2d");
+
+    const progressContainer = document.getElementById('progressContainer');
+    const progressBar = document.getElementById('progressBar');
+    const forwardBtn = document.getElementById('forwardBtn');
+    const rewindBtn = document.getElementById('rewindBtn');
+
+    let isDragging = false;
+    let currentRotating = null;
+    let animationId = null;
+    let currentToggleBtn = null;
+
+    // 📌 برای افکت حلقه روی کاور
+    let activeCanvasVis = null;
+    let activeCtxVis = null;
+
+    // Audio Context
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const source = audioCtx.createMediaElementSource(audioPlayer);
+    const analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 1024;
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+
+    // 📌 برای افکت حلقه‌ها
+    let smoothBass = 0;
+    let phase = 0;
+
+    function formatTime(time) {
+        const min = Math.floor(time / 60);
+        const sec = Math.floor(time % 60).toString().padStart(2, "0");
+        return `${min}:${sec}`;
+    }
+
+    // آپدیت پروگرس بار
+    function updateProgressBar() {
+        if (!audioPlayer.duration) return;
+        const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progressBar.style.width = percent + "%";
+        currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
+    }
+
+    // کنترل پروگرس بار
+    progressContainer.addEventListener('mousedown', e => { isDragging = true; updateProgress(e); });
+    document.addEventListener('mousemove', e => { if (isDragging) updateProgress(e); });
+    document.addEventListener('mouseup', () => { if (isDragging) isDragging = false; });
+    progressContainer.addEventListener('click', updateProgress);
+
+    function updateProgress(e) {
+        const rect = progressContainer.getBoundingClientRect();
+        let x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+        if (!isNaN(audioPlayer.duration)) audioPlayer.currentTime = (x / rect.width) * audioPlayer.duration;
+        progressBar.style.width = (x / rect.width) * 100 + "%";
+        currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
+    }
+
+    // انتخاب آهنگ
+    songItems.forEach(item => {
+        const toggleBtn = item.closest('.cover-box').querySelector('.toggle');
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            handleSongSelection(item, toggleBtn);
+        });
+        item.addEventListener('click', () => handleSongSelection(item, toggleBtn));
+    });
+
+    async function handleSongSelection(item, toggleBtn) {
+        const src = item.getAttribute('data-src');
+        const title = item.textContent;
+        const cover = item.closest('.cover-box').querySelector('.rotating img');
+        const playerDiv = document.querySelector('.player');
+        playerDiv.classList.remove('inactive');
+        void playerDiv.offsetWidth;
+        playerDiv.classList.add('active');
+
+
+        resetAllCovers();
+
+        audioPlayer.src = src;
+        currentSong.textContent = title;
+        coverImg.src = cover.src;
+        playerPanel.style.backgroundImage = `url('${cover.src}')`;
+        currentRotating = cover.closest('.rotating');
+        setRotationState(true);
+
+        currentToggleBtn = toggleBtn;
+
+        // 🎨 انتخاب کانواس مربوط به این کاور
+        activeCanvasVis = item.closest('.cover-box').querySelector('.cover-visualizer');
+        if (activeCanvasVis) {
+            activeCtxVis = activeCanvasVis.getContext("2d");
+            resizeSingleCanvas(activeCanvasVis);
+        }
+
+        try {
+            await audioCtx.resume();
+            audioPlayer.currentTime = 0;
+            await audioPlayer.play();
+            updatePlayIcons(true, toggleBtn);
+            if (!animationId) animate();
+        } catch (err) {
+            console.error("Playback failed:", err);
+        }
+    }
+
+    // پلی/پاز اصلی
+    playPauseBtn.addEventListener('click', async () => {
+        if (audioCtx.state === 'suspended') await audioCtx.resume();
+        togglePlayPause(currentToggleBtn);
+    });
+
+    function togglePlayPause(toggleBtn) {
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            updatePlayIcons(true, toggleBtn);
+            if (!animationId) animate();
+        } else {
+            audioPlayer.pause();
+            updatePlayIcons(false, toggleBtn);
+            if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
+        }
+    }
+
+    // جلو/عقب
+    forwardBtn.addEventListener('click', () => audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + 10));
+    rewindBtn.addEventListener('click', () => audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 10));
+
+    audioPlayer.addEventListener('timeupdate', updateProgressBar);
+    audioPlayer.addEventListener('play', () => setRotationState(true));
+    audioPlayer.addEventListener('pause', () => setRotationState(false));
+    audioPlayer.addEventListener('ended', () => {
+        setRotationState(false);
+        updatePlayIcons(false);
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+        audioPlayer.currentTime = 0;
+        currentToggleBtn = null;
+    });
+
+    function setRotationState(playing) {
+        if (!currentRotating) return;
+        if (playing && (!currentRotating.style.animation || currentRotating.style.animation === 'none')) {
+            currentRotating.style.animation = 'spin 4s linear infinite';
+        }
+        const state = playing ? 'running' : 'paused';
+        currentRotating.style.animationPlayState = state;
+        currentRotating.style.webkitAnimationPlayState = state;
+    }
+
+    function resetAllCovers() {
+        document.querySelectorAll('.rotating').forEach(r => {
+            r.style.animationPlayState = 'paused';
+            r.style.webkitAnimationPlayState = 'paused';
+            r.style.animation = 'none';
+        });
+        document.querySelectorAll('.toggle img').forEach(img => {
+            img.src = "img/ico/audio-player/play-button.png";
+        });
+        document.querySelectorAll('.cover-visualizer').forEach(c => {
+            const ctx = c.getContext("2d");
+            ctx.clearRect(0, 0, c.width, c.height);
+        });
+    }
+
+    function updatePlayIcons(isPlaying, toggleBtn = currentToggleBtn) {
+        playPauseBtn.querySelector('img').src = isPlaying ? "img/ico/audio-player/pause.png" : "img/ico/audio-player/play-button.png";
+        if (toggleBtn) toggleBtn.querySelector('img').src = isPlaying ? "img/ico/audio-player/pause.png" : "img/ico/audio-player/play-button.png";
+    }
+
+    // 🎶 رسم موج (Waveform)
+    function drawWaveform() {
+        ctxWave.clearRect(0, 0, canvasWave.width, canvasWave.height);
+        analyser.getByteTimeDomainData(dataArray);
+        const w = canvasWave.clientWidth, h = canvasWave.clientHeight, center = h / 2;
+        const slice = w / bufferLength;
+        ctxWave.lineWidth = 2; ctxWave.strokeStyle = "#000";
+        ctxWave.beginPath();
+        for (let i = 0; i < bufferLength; i++) {
+            const x = i * slice;
+            const y = center + ((dataArray[i] / 128 - 1) * center);
+            if (i === 0) ctxWave.moveTo(x, y); else ctxWave.lineTo(x, y);
+        }
+        ctxWave.stroke();
+    }
+
+    // 🎶 رسم افکت حلقه‌ای روی کاور فعال
+    function drawVisualizer() {
+        if (!activeCtxVis || !activeCanvasVis) return;
+        const ctxVis = activeCtxVis;
+        const canvasVis = activeCanvasVis;
+
+        analyser.getByteFrequencyData(dataArray);
+        const freqBins = dataArray;
+
+        const sr = audioCtx.sampleRate || 44100;
+        const binHz = sr / analyser.fftSize;
+        const bassMaxIdx = Math.floor(150 / binHz);
+        const bassEnergy = avg(freqBins, 1, bassMaxIdx);
+        smoothBass = smoothBass * 0.9 + bassEnergy * 0.1;
+
+        ctxVis.fillStyle = "rgba(0, 0, 0, 0.15)"; // 
+        ctxVis.fillRect(0, 0, canvasVis.width, canvasVis.height);
+
+
+        const cx = canvasVis.width / 2;
+        const cy = canvasVis.height / 2;
+        const base = Math.min(canvasVis.width, canvasVis.height) * 0.22;
+        const bassAmp = (smoothBass / 255) * 180;
+
+        ctxVis.save();
+        ctxVis.globalCompositeOperation = "lighter";
+        const halos = [
+            { r: base * 1.0, w: 3, spread: 0.32 },
+            { r: base * 1.3, w: 2, spread: 0.46 },
+            { r: base * 1.6, w: 1.5, spread: 0.62 },
+        ];
+        phase += 0.01 + bassAmp * 0.0005;
+
+        halos.forEach((h, idx) => {
+            ctxVis.beginPath();
+            const steps = 360;
+            const amp = (0.5 + idx * 0.25) * (0.6 + bassAmp * 0.007);
+            ctxVis.lineWidth = h.w + bassAmp * 0.006;
+            ctxVis.shadowBlur = 18 + bassAmp * 0.08;
+            ctxVis.shadowColor = `hsla(${200 + bassAmp * 0.2},90%,60%,0.85)`;
+            const grad = ctxVis.createLinearGradient(0, 0, canvasVis.width, 0);
+            grad.addColorStop(0, "hsla(180,95%,62%,0.8)");
+            grad.addColorStop(0.5, "hsla(260,95%,62%,0.85)");
+            grad.addColorStop(1, "hsla(320,95%,62%,0.8)");
+            ctxVis.strokeStyle = grad;
+
+            for (let i = 0; i <= steps; i++) {
+                const t = (i / steps) * Math.PI * 2;
+                const wobble =
+                    Math.sin(t * 2 + phase * (1 + idx * 0.3)) * 0.6 +
+                    Math.sin(t * 5 + phase * 1.7) * 0.25 +
+                    Math.sin(t * 9 - phase * 1.1) * 0.15;
+                const ripple = 1 + wobble * h.spread + bassAmp * 0.0025;
+                const rad = h.r * ripple + amp;
+                const x = cx + Math.cos(t) * rad;
+                const y = cy + Math.sin(t) * rad;
+                if (i === 0) ctxVis.moveTo(x, y); else ctxVis.lineTo(x, y);
+            }
+            ctxVis.closePath();
+            ctxVis.stroke();
+        });
+        ctxVis.restore();
+    }
+
+    function avg(arr, start, end) {
+        let sum = 0, count = 0;
+        for (let i = start; i < end; i++) { sum += arr[i]; count++; }
+        return count ? sum / count : 0;
+    }
+
+    // 🎬 انیمیشن کلی
+    function animate() {
+        if (!audioPlayer.paused) {
+            updateProgressBar();
+            drawWaveform();
+            drawVisualizer();
+            animationId = requestAnimationFrame(animate);
+        }
+    }
+
+    // تغییر سایز کانواس‌ها
+    function resizeSingleCanvas(c) {
+        c.width = c.clientWidth * devicePixelRatio;
+        c.height = c.clientHeight * devicePixelRatio;
+        const ctx = c.getContext("2d");
+        ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+    }
+    function resizeCanvasAll() {
+        resizeSingleCanvas(canvasWave);
+        document.querySelectorAll('.cover-visualizer').forEach(c => resizeSingleCanvas(c));
+    }
+    window.addEventListener("resize", resizeCanvasAll);
+    resizeCanvasAll();
+</script>
+
+<!-- V2-scrol -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const header = document.getElementById('header');
+        let lastScroll = window.scrollY;
+        const scrollThreshold = 80; // میزان حساسیت اسکرول (هر چی بیشتر، حساسیت کمتر)
+
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+
+        // کنترل اسکرول
+        window.addEventListener('scroll', () => {
+            if (!isMobile()) return;
+
+            const currentScroll = window.scrollY;
+            const scrollDiff = currentScroll - lastScroll;
+
+            if (scrollDiff > scrollThreshold && currentScroll > 20) {
+                // اسکرول زیاد به پایین → جمع شود
+                header.classList.add('compact');
+                lastScroll = currentScroll;
+            }
+            else if (scrollDiff < -scrollThreshold) {
+                // اسکرول زیاد به بالا → باز شود
+                header.classList.remove('compact');
+                lastScroll = currentScroll;
+            }
+        });
+
+        // وقتی آهنگ پخش شد، پلیر رو نمایش بده
+        audioPlayer.addEventListener('play', () => {
+            header.classList.remove('compact');
+        });
+
+        audioPlayer.addEventListener('pause', () => {
+            // اینجا کاری نمی‌کنیم چون رفتار اسکرول خودش مدیریت می‌کنه
+        });
+    });
+    // جلوگیری از سلکت با کلیک و درگ روی کل صفحه
+    document.body.addEventListener('mousedown', e => {
+        e.preventDefault();
+    });
+</script>
+</html>

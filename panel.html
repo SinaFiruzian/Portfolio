@@ -1,0 +1,704 @@
+<!-- //////////
+
+
+ این صفحه ساختش برای دوران جاهلیت بنده بوده و اگه تمیز نوشته نشده مرا ببخشید😂😂 
+
+
+ ////////-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <web-particles id="tsparticles"
+        options='{"fps_limit":60,"interactivity":{"detectsOn":"canvas","events":{"onClick":{"enable":false,"mode":"push"},"onHover":{"enable":true,"mode":"repulse"},"resize":true},"modes":{"push":{"particles_nb":4},"repulse":{"distance":200,"duration":0.4}}},"particles":{"color":{"value":"#000000"},"links":{"color":"#000000","distance":150,"enable":true,"opacity":0.4,"width":1},"move":{"bounce":false,"direction":"none","enable":true,"outMode":"out","random":false,"speed":2,"straight":false},"number":{"density":{"enable":true,"area":800},"value":70},"opacity":{"value":0.5},"shape":{"type":"circle"},"size":{"random":true,"value":5}},"detectRetina":true}'></web-particles>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.28.0/dist/tsparticles.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.5.0/custom-elements-es5-adapter.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/web-particles@1.1.0/dist/web-particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <title>panel</title>
+    <style>
+        a {
+            text-decoration: none;
+            outline: none;
+        }
+
+        #tsparticles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            background-image: url("/img-panel/bg-all.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card {
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 2rem;
+            box-shadow: 0 0 20px rgb(0, 0, 0);
+        }
+
+        .bg-all {
+            background-image: url("/img/bg/bg-all.jpg");
+        }
+
+        .bg-box {
+            background-image: url("/img/bg/bg-box.jpg");
+
+        }
+
+        .row-tbR {
+            padding-top: 3%;
+            border: 2px solid black;
+            border-radius: 1rem;
+            margin-bottom: 5%;
+        }
+
+        .hr-tbR {
+            border: none;
+            margin: 5px;
+            height: 3px;
+            background-color: black;
+        }
+
+        .row-tbR-li {
+            border-radius: 1rem;
+            margin: 0;
+            margin-left: 3px;
+            margin-right: 3px;
+            margin-bottom: 3px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            background-image: linear-gradient(to center, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            background-size: 200% 100%;
+            background-position: 100% 0;
+            transition: background-position 0.7s ease, box-shadow 1s ease, scale 0.8s ease, border 1.5s ease;
+        }
+
+        .row-tbR-li:hover {
+            background-position: 0 0;
+            border: 5px solid;
+            box-shadow: 0 8px 20px black;
+            scale: 1.1;
+        }
+
+        .row-tbCenter .title {
+            font-size: 150%;
+            background-color: #c2c2c260;
+            border-radius: 2rem;
+            margin-top: 1rem;
+            padding: 2%;
+        }
+
+        h3 {
+            padding: 5px;
+            border-bottom: 1px solid;
+        }
+
+        .h5 {
+            margin-top: -10px;
+            padding: 15px;
+            border-bottom: 1px solid;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+        }
+
+        .box-1 {
+            justify-items: center;
+        }
+
+        .box-2 {
+            border: 2px solid black;
+            border-radius: 2rem;
+            max-width: 340px;
+            width: 340px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .link {
+            padding-top: 8px;
+            justify-content: center;
+            gap: 8%;
+        }
+
+        canvas {
+            display: block;
+
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bg-all {
+            background-image: url("/img-panel/bg-all.jpg");
+        }
+
+        .bg-box {
+            background-image: url("/img-panel/bg-box.jpg");
+
+        }
+
+        .box {
+            font-size: 20px;
+            border-radius: 12px;
+            max-width: 350px;
+            height: 550px;
+        }
+
+        .card {
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 2rem;
+            box-shadow: 0 0 20px rgb(0, 0, 0);
+
+        }
+
+        .links_page {
+
+            text-decoration: none;
+            border-radius: 3rem;
+            margin-bottom: 5px;
+            width: 200px;
+            color: black;
+            background-color: white;
+            padding: 5px;
+            box-shadow: 0 0 10px rgba(70, 70, 70, 0.521);
+            transition: box-shadow 0.8s ease, transform 0.8s ease, border-bottom 0.6s ease, color 1S ease, background-color 1s ease;
+        }
+
+        .links_page:hover {
+            text-decoration: none;
+
+            transform: scale(1.1);
+            cursor: pointer;
+
+            background-color: black;
+            color: white;
+            box-shadow:
+                0 -5px 10px rgba(255, 255, 255, 0.8),
+                0 15px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .exit:hover {
+            background-color: red;
+            transition: box-shadow 0.8s ease, transform 0.8s ease, border-bottom 0.6s ease, background-color 1.5s ease;
+
+        }
+
+        .edit-btn:hover {
+            color: black;
+            background-color: rgb(50, 218, 28);
+        }
+
+
+        .links,
+        .username-div {
+            justify-content: center;
+            margin-top: 2%;
+            margin-bottom: -2%;
+            cursor: pointer;
+        }
+
+        .username {
+            border: px solid rgb(0, 0, 0);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.801);
+            box-shadow: 0 0 10px rgb(70, 70, 70);
+            background-color: white;
+            border-radius: 10rem;
+            width: 300px;
+            margin: 0 0 30px 0;
+            transition: box-shadow 1s ease;
+            transition: box-shadow 1s ease, font-size 1s ease, transform 1s ease, background-color 1s ease, color 1s ease;
+        }
+
+        .usernamePANEL {
+            display: block;
+            position: relative;
+            margin-bottom: 5%;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .usernamePANEL::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #333;
+            transition: width 0.3s;
+        }
+
+        .usernamePANEL:focus-within::after {
+            width: 86%;
+        }
+
+        .img-profil {
+            box-shadow: 0 0 20px;
+            box-shadow: 0 0 10px rgb(70, 70, 70);
+            background-color: white;
+            border-radius: 150px;
+            transition: border-radius 1s ease, box-shadow 1s ease, transform 1s ease;
+        }
+
+        .img-profile-rightPanel {
+            box-shadow: 0 0 20px;
+            box-shadow: 0 0 10px rgb(70, 70, 70);
+            background-color: white;
+            border-radius: 2rem;
+        }
+
+        .profile-wrapper:hover .img-profil {
+            border-radius: 2rem;
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .profile-wrapper:hover .username {
+            border-radius: 2rem;
+            box-shadow:
+                0 -5px 15px rgba(112, 112, 112, 0.356),
+
+                0 15px 15px rgba(0, 0, 0, 0.8);
+
+            transform: scale(1.1);
+            background-color: rgb(15, 15, 15);
+            color: white;
+
+        }
+
+        .gap {
+            gap: 50px;
+            justify-items: center;
+            justify-content: center;
+        }
+
+        #toggle-my,
+        #toggle-other,
+        #toggle-contact {
+            display: none;
+        }
+
+        .show-tab {
+            display: flex !important;
+            flex-wrap: wrap;
+        }
+
+
+        td {
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .table-hover tbody tr {
+            border-radius: 10px;
+        }
+
+        .table-hover tbody tr:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.322);
+            transition: box-shadow 0.3s ease;
+            background-color: #f9f9f9;
+            z-index: 1;
+            position: relative;
+            transition: box-shadow 0.8s ease;
+            cursor: pointer;
+        }
+
+        .custom-input {
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding-bottom: 8px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .form-control:focus {
+            border-color: rgb(255, 255, 255);
+            box-shadow: 0 0 20px rgb(255, 255, 255);
+            outline: none;
+        }
+
+
+        .custom-input-wrapper {
+            display: block;
+            position: relative;
+            margin-bottom: 5%;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .custom-input-wrapper::after {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            content: "";
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #333;
+            transition: width 0.3s;
+        }
+
+        .custom-input-wrapper:focus-within::after {
+            width: 94%;
+        }
+
+        .btn {
+            width: 40%;
+        }
+
+        .box-1 {
+            justify-items: center;
+
+        }
+
+        .box-2 {
+            border: 2px solid black;
+            border-radius: 2rem;
+            max-width: 340px;
+            width: 340px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .show-search {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 2rem;
+            z-index: 10;
+            max-width: 0;
+            height: 5%;
+            overflow: hidden;
+            background-color: #a1a1a148;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.829);
+            transition: max-width 1s ease 2s;
+        }
+
+
+        .search {
+            max-width: 0;
+            height: 0px;
+            overflow: hidden;
+            transition: max-width 2s ease, height 0.6s ease;
+        }
+
+
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(2px);
+            background-color: rgba(255, 255, 255, 0.342);
+            z-index: 5;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease;
+        }
+
+
+        .form-search {
+            outline: none;
+            border: 2px solid black;
+            border-radius: 2rem;
+            height: 50px;
+            color: black;
+            background-color: rgba(202, 200, 200, 0.692);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .form-search::placeholder {
+            font-weight: bold;
+            color: #000;
+            opacity: 0.6;
+        }
+
+        #toggle-search:checked~.main-search .show-search {
+            max-width: 260px;
+            height: auto;
+        }
+
+        #toggle-search:checked~.main-search .search-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        .fixed-bottom-space {
+            height: 150px;
+        }
+
+        .link {
+            padding-top: 8px;
+            justify-content: center;
+            gap: 8%;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox" id="toggle-search" hidden>
+    <div class="main-search">
+        <div class="search-overlay">
+            <div class="position-relative show-search search text-center">
+                <input type="text" class="text-center form-search" placeholder="جستجو">
+                <a href="#" style="color: black;">
+                    <i class="bi bi-trash position-absolute"
+                        style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                    <i class="bi bi-search position-absolute"
+                        style="left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                </a>
+            </div>
+        </div>
+        <nav class="fixed-bottom mb-5">
+            <div class="box-1">
+                <div class="box-2">
+                    <div class="d-flex link">
+                        <a href="#"><img src="img-panel/nav/home.png" alt="Home"></a>
+                        <a href="#"><img src="img-panel/nav/other.png" alt="Other"></a>
+                        <a href="#"><img src="img-panel/nav/profile.png" alt="Profile"></a>
+                        <label for="toggle-search">
+                            <img src="img-panel/nav/search.png" alt="search">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container mt-5">
+        <div class="row gap p-2">
+            <input type="radio" id="toggle-profile" name="section-toggle" hidden checked>
+            <input type="radio" id="toggle-my" name="section-toggle" hidden>
+            <input type="radio" id="toggle-contact" name="section-toggle" hidden>
+            <div class=" text-center box card col-md-3 bg-box">
+                <label class="profile-wrapper" for="toggle-profile" style="cursor: pointer;">
+                    <div name="img-profil" class="d-block p-3">
+                        <img src="img-panel/avatar.png" alt="profil" class="w-75 img-profil">
+                    </div>
+                    <div class="row username-div">
+                        <div name="title-name" class="text-center username">
+                            <p class="pt-3">Sinos60!</p>
+                        </div>
+                    </div>
+                </label>
+                <!-- <hr> -->
+                <div name="links_page" class="px-3">
+                    <div class="row text-center mb-5 links">
+                        <label for="toggle-my" class="links_page">Item 1</label>
+                        <a href="https://github.com/SinaFiruzian" target="_blank" class="links_page">Item 2</a>
+                        <label for="toggle-contact" class="links_page">Item 3</label>
+                        <a href="#" class="links_page exit" style="margin-bottom: 10px;">خروج</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 main-content">
+                <div class="show-profile card p-3 row flex-row-reverse bg-box">
+                    <div class="col-md-5 text-center">
+                        <div name="img-profil" class="d-block p-3">
+                            <img src="img-panel/avatar.png" alt="profil" class="w-75 img-profile-rightPanel">
+                        </div>
+                        <div class="row username-div">
+                            <div name="title-name" class="text-center usernamePANEL position-relative mb-3">
+                                <input type="text" class="custom-input pt-2 form-control" value="Sinos60!">
+                                <i class="bi bi-pencil position-absolute"
+                                    style="left: 22px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 text-center mt-5">
+                        <h3 class="mb-4" style="margin-top: -47px;"><i class="bi bi-person-circle"></i> جزئیات حساب</h3>
+                        <div class="custom-input-wrapper position-relative mb-3">
+                            <input type="text" class="custom-input text-center form-control" placeholder="نام"
+                                value="سینا فیروزیان" style="padding-left: 35px;">
+                            <i class="bi bi-pencil position-absolute"
+                                style="left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                        </div>
+
+                        <div class="custom-input-wrapper position-relative mb-3">
+                            <input type="text" class="custom-input text-center form-control" placeholder="موبایل"
+                                value="09018894512" style="padding-left: 35px;">
+                            <i class="bi bi-pencil position-absolute"
+                                style="left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                        </div>
+
+                        <div class="custom-input-wrapper position-relative mb-3">
+                            <input type="text" class="custom-input text-center form-control" placeholder="ایمیل"
+                                value="firuziansina@gmail.com" style="padding-left: 35px;">
+                            <i class="bi bi-pencil position-absolute"
+                                style="left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                        </div>
+
+                        <div class="custom-input-wrapper position-relative mb-3">
+                            <input type="text" class="custom-input text-center form-control" placeholder="سن" value="19"
+                                style="padding-left: 35px;">
+                            <i class="bi bi-pencil position-absolute"
+                                style="left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                        </div>
+                        <div class="" style="z-index: 20;">
+                            <button class="btn links_page edit-btn">ویرایش</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="show-my card p-3 bg-box" dir="rtl">
+                    <div class="container mt-3 table-responsive" dir="rtl">
+                        <div class="text-end">
+                            <h3>توجه!</h3>
+                            <p>برای انتقال به صفحه دیدگاه خود بر روی آن کلیک کنید</p>
+                        </div>
+                        <table class="table table-hover" dir="rtl">
+                            <thead>
+                                <tr>
+                                    <th>نام</th>
+                                    <th>تاریخ</th>
+                                    <th>موضوع</th>
+                                    <th>دیدگاه</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>نام</td>
+                                    <td>1404/05/01</td>
+                                    <td>موضوع</td>
+                                    <td>دیدگاه</td>
+                                </tr>
+                                <tr>
+                                    <td>نام</td>
+                                    <td>1404/05/01</td>
+                                    <td>موضوع</td>
+                                    <td>دیدگاه</td>
+                                </tr>
+                                <tr>
+                                    <td>نام</td>
+                                    <td>1404/05/01</td>
+                                    <td>موضوع</td>
+                                    <td>دیدگاه</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="show-contact card p-3 bg-box">
+                    <div class="text-end">
+                        <h3 style="padding: 3%;">ارتباط با ما</h3>
+                    </div>
+                    <div class="custom-input-wrapper position-relative mb-3">
+                        <textarea name="cantact" class="custom-input text-end form-control"
+                            placeholder="انتقاد ، پیشنهاد ، اعتراض و... خودتان را بنویسید"
+                            style="resize: none; height: 150px;"></textarea>
+                    </div>
+                    <div class="text-center" style="width: 100%;">
+                        <button class="btn links_page">ارسال</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="fixed-bottom-space"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleProfile = document.getElementById("toggle-profile");
+            const toggleMy = document.getElementById("toggle-my");
+            const toggleContact = document.getElementById("toggle-contact");
+            const showProfile = document.querySelector(".show-profile");
+            const showMy = document.querySelector(".show-my");
+            const showContact = document.querySelector(".show-contact");
+            function activateTab(tab) {
+                showProfile.style.display = "none";
+                showMy.style.display = "none";
+                showContact.style.display = "none";
+
+                showProfile.classList.remove("show-tab");
+                showMy.classList.remove("show-tab");
+                showContact.classList.remove("show-tab");
+
+                if (tab === "profile") {
+                    showProfile.style.display = "flex";
+                    showProfile.classList.add("show-tab");
+                } else if (tab === "my") {
+                    showMy.style.display = "block";
+                    showMy.classList.add("show-tab");
+                } else if (tab === "contact") {
+                    showContact.style.display = "flex";
+                    showContact.classList.add("show-tab");
+                }
+            }
+            activateTab("profile");
+            toggleProfile.addEventListener("change", function () {
+                if (this.checked) activateTab("profile");
+            });
+            toggleMy.addEventListener("change", function () {
+                if (this.checked) activateTab("my");
+            });
+            toggleContact.addEventListener("change", function () {
+                if (this.checked) activateTab("contact");
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('click', function (e) {
+            const checkbox = document.getElementById('toggle-search');
+            const label = document.querySelector('label[for="toggle-search"]');
+            const searchBox = document.querySelector('.show-search');
+            const box2 = document.getElementsByClassName('box-2')[0];
+
+            if (
+                !checkbox.contains(e.target) &&
+                !label.contains(e.target) &&
+                !searchBox.contains(e.target)
+            ) {
+                checkbox.checked = false;
+            }
+        });
+    </script>
+</body>
+
+</html>
